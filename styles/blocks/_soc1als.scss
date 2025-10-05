@@ -1,0 +1,55 @@
+@use '../helpers/' as *;
+
+.soc1als {
+  &--3-cols {
+    width: 100%;
+
+    .soc1als {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        max-width: rem(308);
+        //If more elements would be added later
+        row-gap: rem(10);
+
+        @include laptop {
+          column-gap: rem(10);
+        }
+      }
+
+      &__link {
+        @include flex-center;
+
+        width: 100%;
+        height: rem(60);
+        background-color: var(--color-dark-10);
+        border: var(--border);
+        border-radius: rem(6);
+
+        @include laptop {
+          height: rem(48);
+        }
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    column-gap: rem(20);
+    color: var(--color-light);
+
+    @include tablet {
+      column-gap: rem(14);
+    }
+  }
+
+  &__link {
+    --size: #{rem(24)};
+
+    @include square(var(--size));
+    @include laptop {
+      --size: #{rem(20)};
+    }
+  }
+}

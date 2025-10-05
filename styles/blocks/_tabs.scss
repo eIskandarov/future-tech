@@ -1,0 +1,86 @@
+@use '../helpers/' as *;
+
+.tabs {
+  &__header {
+    border-bottom: var(--border);
+
+    @include laptop {
+      overflow-x: auto;
+    }
+  }
+
+  &__buttons {
+    padding-block: fluid(50, 20);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: rem(20);
+
+    @include laptop {
+      column-gap: rem(14);
+    }
+
+    @include tablet {
+      width: max-content;
+    }
+
+    &--compact {
+      display: inline-flex;
+      padding: rem(10);
+      background-color: var(--color-dark);
+      border-radius: rem(10);
+      column-gap: rem(10);
+
+      &.is-active {
+        background-color: var(--color-dark-15);
+      }
+
+      & .tabs__button {
+        padding: rem(18) fluid(38, 13);
+
+        @include laptop {
+          padding-block: rem(14);
+        }
+      }
+    }
+  }
+
+  &__button {
+    padding-block: fluid(30, 18);
+    padding-inline: rem(11);
+    border: var(--border);
+    border-radius: rem(8);
+    font-size: rem (18);
+    color: var(--color-gray-60);
+    text-align: center;
+
+    &:hover {
+      &:not(.is-active) {
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+        background-color: var(--color-dark-10);
+        transition-duration: 0.2s;
+        cursor: pointer;
+      }
+    }
+
+    @include laptop {
+      font-size: rem (14);
+    }
+
+    &.is-active {
+      background-color: var(--color-dark-10);
+      color: var(--color-light);
+      font-weight: 500;
+    }
+  }
+
+  &__content {
+    &:not(.is-active) {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline-offset: -1rem;
+    }
+  }
+}
